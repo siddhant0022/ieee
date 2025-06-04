@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I3CEET 2025 Conference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; }
+    /* Optional: Prevent horizontal scroll on very small screens if needed */
+    body {
+        overflow-x: hidden;
+    }
+  </style>
+</head>
+<body class="bg-[#f7f7f7]">
+
+  <!-- Header Bar -->
+  <div class="bg-[#FFF1F1] shadow-md w-full">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between py-3 px-4 md:px-6">
+      <!-- Left Logo and Galgotias Text -->
+      <div class="flex items-center space-x-2 mb-2 md:mb-0">
+        <img src="/public/gcetlogo.png" alt="Galgotias Logo" class="h-9 md:h-10 w-auto">
+        <div class="flex flex-col leading-none ml-1">
+         
+        </div>
+      </div>
+      <!-- Conference Title -->
+      <div class="flex-1 text-center px-4 md:px-0">
+        <span class="font-bold text-[13px] md:text-[15px] text-[#222] tracking-tight leading-tight block">
+          INTERNATIONAL CONFERENCE ON COMPUTING, COMMUNICATION, AND SUSTAINABLE ENERGY TECHNOLOGIES (ICEC2SET-2025)
+        </span>
+      </div>
+      <!-- Right Logo (IEEE) -->
+      <div class="mt-2 md:mt-0 hidden sm:block">
+        <img src="./public/ieeelogo.png" alt="IEEE Logo" class="h-9 md:h-10 w-auto">
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsive Navigation Bar with Slide-out Drawer -->
+  <nav class="bg-[#b71c1c] text-white text-sm font-semibold w-full relative z-50">
+    <div class="max-w-[1100px] mx-auto flex items-center justify-between px-4 md:px-6 py-3">
+      <!-- Logo or Site Name (optional - can be added here if needed for mobile nav header) -->
+      <div class="flex-1 flex items-center">
+        <!-- Your logo/site name for the nav bar -->
+      </div>
+      <!-- Hamburger Button (mobile) -->
+      <div class="md:hidden">
+        <button id="drawer-toggle" class="focus:outline-none p-1">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex flex-row items-center space-x-4 md:space-x-6 ">
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Home</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">For Authors</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Call For Papers</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Speakers</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Registration</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Committee</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Venue</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Schedule</a>
+        <a href="#" class="px-2 md:px-4 py-2 hover:bg-[#a31515] rounded">Contact Us</a>
+      </div>
+    </div>
+    <!-- Slide-out Drawer (Mobile) -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-40 hidden transition-opacity duration-300"></div>
+    <div id="drawer-menu" class="fixed top-0 left-0 h-full w-64 bg-[#b71c1c] z-50 transform -translate-x-full transition-transform duration-300 flex flex-col pt-8">
+      <button id="drawer-close" class="absolute top-3 right-3 text-white focus:outline-none p-1">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Home</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">For Authors</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Call For Papers</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Speakers</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Registration</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Committee</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Venue</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Schedule</a>
+      <a href="#" class="block px-6 py-3 hover:bg-[#a31515]">Contact Us</a>
+    </div>
+    <script>
+      // Drawer open/close logic
+      const drawerToggle = document.getElementById('drawer-toggle');
+      const drawerMenu = document.getElementById('drawer-menu');
+      const drawerOverlay = document.getElementById('drawer-overlay');
+      const drawerClose = document.getElementById('drawer-close');
+      function openDrawer() {
+        drawerMenu.classList.remove('-translate-x-full');
+        drawerOverlay.classList.remove('hidden');
+      }
+      function closeDrawer() {
+        drawerMenu.classList.add('-translate-x-full');
+        drawerOverlay.classList.add('hidden');
+      }
+      drawerToggle.addEventListener('click', openDrawer);
+      drawerClose.addEventListener('click', closeDrawer);
+      drawerOverlay.addEventListener('click', closeDrawer);
+      // Optional: close drawer on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    </script>
+  </nav>
+
+  <!-- Main Content Container -->
+  <div class="max-w-6xl mx-auto mt-6 px-4 md:px-6">
+
+    <!-- Hero Section -->
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-stretch">
+      <!-- Right: Image (on mobile, appears on top) -->
+      <div class="w-full md:w-1/2 h-56 sm:h-72 md:h-[320px] min-h-[220px] md:min-h-[320px] flex items-stretch justify-center bg-gray-100 relative border-l-0 md:border-l-4 border-[#e53935] order-1 md:order-2">
+        <img 
+          src="/public/gcet.jpg" 
+          alt="GCET Campus" 
+          class="object-cover w-full h-full"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <!-- Placeholder (hidden by default, shown if image fails) -->
+        <div class="absolute inset-0 hidden items-center justify-center bg-gray-200">
+          <span class="text-gray-400 text-lg font-semibold">[Image Placeholder]</span>
+        </div>
+      </div>
+      <!-- Left: Conference Info -->
+      <div class="w-full md:w-1/2 p-4 md:p-6 flex flex-col justify-between order-2 md:order-1">
+        <div>
+          <div class="text-[#e53935] font-bold text-[16px] md:text-[18px] leading-tight mb-2">
+           The International Conference on Computing, Communication,<br>
+             and Sustainable Energy Technologies <br>
+           (ICEC2SET-2025) 
+          </div>
+          <div class="mt-1 text-[18px] md:text-[22px] font-normal text-[#222]">18th - 19th Dec 2025</div>
+          <!-- I3CEET logo + Round badge + Organized By section -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-6">
+            <img src="/public/i3ceet logo.png" alt="I3CEET Logo" class="h-12 w-12 md:h-16 md:w-16 object-contain rounded-full border border-[#e53935] bg-white">
+            
+            <div class="text-[11px] md:text-[13px] text-[#222] leading-tight text-center sm:text-left">
+              <span class="font-bold">ORGANIZED BY:</span><br>
+              Department of Electronics and Communication Engineering, Galgotias College of Engineering and Technology, Greater Noida-201310
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full">
+          <button class="bg-[#e53935] text-white font-bold text-[15px] md:text-[16px] px-4 md:px-6 py-2 rounded-md shadow hover:bg-[#b71c1c] transition w-full sm:w-auto text-center">Paper Submission</button>
+          <button class="bg-white border-2 border-[#e53935] text-[#e53935] font-bold text-[15px] md:text-[16px] px-4 md:px-6 py-2 rounded-md shadow hover:bg-[#fbe9e7] transition w-full sm:w-auto text-center">Register Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- About and Countdown Section -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- About Conference -->
+      <div class="md:col-span-2 rounded-lg shadow p-4 md:p-6 bg-[#FFF1F1]">
+        <div class="text-[#b71c1c] font-bold text-base md:text-lg mb-2">ABOUT CONFERENCE</div>
+        <div class="text-gray-700 text-sm md:text-base leading-relaxed">
+          The International Conference on Computing, Communication, and Sustainable Energy Technologies 
+ICEC2SET-2025) shall serve as a vital platform for researchers, academics, and industry professionals to 
+converge and exchange cutting-edge advancements. It will foster a dynamic atmosphere where the 
+synergy between computing, communication, and sustainable energy is explored to the required depth. 
+Participants delve into topics ranging from artificial intelligence, data science, and machine learning 
+applications in energy management to the development of robust communication networks, wireless 
+power transmission. Discussions encompass the latest breakthroughs in renewable energy sources, 
+energy efficiency, and the integration of sustainable practices into technological frameworks along with 
+IoT, Edge Computing..etc. The conference emphasizes the critical role of innovations in addressing global 
+energy challenges while promoting environmentally conscious solutions. Through keynote speeches, 
+technical sessions, and poster presentations, the conference facilitates knowledge dissemination and 
+collaboration, aiming to drive the development of sustainable and technologically advanced solutions for 
+a better future. Further details shall be provided in conference tracks.
+          
+        </div>
+      </div>
+      <!-- Countdown and Important Dates -->
+      <div class="bg-[#FFF1F1] rounded-lg shadow p-4 md:p-6 flex flex-col">
+        <div class="text-[#b71c1c] font-bold text-base md:text-lg mb-2">CONFERENCE BEGINS IN</div>
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+          <div class="flex flex-col items-center bg-[#b71c1c] text-white rounded px-2 py-1 w-16">
+            <span class="text-xl font-bold" id="countdown-days">XX</span>
+            <span class="text-xs">Days</span>
+          </div>
+          <div class="flex flex-col items-center bg-[#b71c1c] text-white rounded px-2 py-1 w-16">
+            <span class="text-xl font-bold" id="countdown-hours">XX</span>
+            <span class="text-xs">Hours</span>
+          </div>
+          <div class="flex flex-col items-center bg-[#b71c1c] text-white rounded px-2 py-1 w-16">
+            <span class="text-xl font-bold" id="countdown-minutes">XX</span>
+            <span class="text-xs">Minutes</span>
+          </div>
+          <div class="flex flex-col items-center bg-[#b71c1c] text-white rounded px-2 py-1 w-16">
+            <span class="text-xl font-bold" id="countdown-seconds">XX</span>
+            <span class="text-xs">Seconds</span>
+          </div>
+        </div>
+        <div class="text-[#b71c1c] font-bold text-base md:text-lg mb-2">IMPORTANT DATES</div>
+        <div class="text-sm md:text-base text-gray-700 space-y-1">
+          <div><span class="font-semibold">Paper Submission Deadline:</span> <span class="text-black">20th Nov, 2025</span></div>
+          <div><span class="font-semibold">Notification of Acceptance:</span> <span class="text-black">2nd Dec, 2025</span></div>
+          <div><span class="font-semibold">Registration/ Camera Ready Deadline:</span> <span class="text-black"></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const countdownDays = document.getElementById('countdown-days');
+    const countdownHours = document.getElementById('countdown-hours');
+    const countdownMinutes = document.getElementById('countdown-minutes');
+    const countdownSeconds = document.getElementById('countdown-seconds');
+
+    // Set the target date (December 18, 2025)
+    const targetDate = new Date('Dec 18, 2025 00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // Calculations for days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Update the HTML elements
+      if (distance > 0) {
+        countdownDays.innerText = days;
+        countdownHours.innerText = hours;
+        countdownMinutes.innerText = minutes;
+        countdownSeconds.innerText = seconds;
+      } else {
+        // Display a message when the countdown is finished
+        document.getElementById('countdown-section').innerHTML = "<div class='text-center text-[#b71c1c] font-bold text-lg'>Conference has started!</div>";
+      }
+    }
+
+    // Update the countdown every 1 second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+    // Initial call to display the countdown immediately
+    updateCountdown();
+  </script>
+
+   <!-- Contact Section -->
+  <footer class="bg-[#b71c1c] text-white pt-12 pb-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:justify-between gap-10">
+      <!-- Logo and Conference Name -->
+      <div class="flex flex-col items-start md:items-center md:w-1/3 mb-8 md:mb-0">
+        <div class="flex items-center gap-2 sm:gap-3 mb-3">
+          <img src="/public/gcetlogo.png" alt="Galgotias College of Engineering and Technology" class="h-8 sm:h-10 md:h-12 w-auto rounded bg-white p-1 object-contain"/>
+          <img src="/public/ieeelogo.png" alt="IEEE Logo" class="h-6 sm:h-8 md:h-10 w-auto rounded bg-white p-1 object-contain"/>
+        </div>
+        <div class="font-bold text-lg tracking-wide">CEC2SET-2025</div>
+        <div class="text-sm text-red-200">Galgotias College of Engineering and Technology</div>
+      </div>
+      <!-- Quick Links -->
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <div class="font-semibold text-red-200 mb-3">Quick Links</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-red-400 transition">Home</a></li>
+          <li><a href="committee.html" class="hover:text-red-400 transition">For Authors</a></li>
+          <li><a href="speaker.html" class="hover:text-red-400 transition">Call For Papers</a></li>
+          <li><a href="paper-submission.html" class="hover:text-red-400 transition">Speakers</a></li>
+          <li><a href="registration.html" class="hover:text-red-400 transition">Registration</a></li>
+          <li><a href="special-session.html" class="hover:text-red-400 transition">Committee</a></li>
+          <li><a href="venue.html" class="hover:text-red-400 transition">Venue</a></li>
+          <li><a href="schedule.html" class="hover:text-red-400 transition">Schedule</a></li>
+          <li><a href="contact.html" class="hover:text-red-400 transition">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Contact & Social -->
+      <div class="md:w-1/3">
+        <div class="font-semibold text-red-200 mb-3">Contact</div>
+        <div class="text-sm mb-2">Galgotias College of Engineering and Technology,<br>Knowledge Park II, Greater Noida, UP 201310, India</div>
+        <div class="text-sm mb-2">Email: <a href="mailto:info@galgotiacollege.edu" class="underline hover:text-red-400">info@galgotiacollege.edu</a></div>
+        <div class="text-sm mb-4">Phone: xxx</div>
+        <div class="flex gap-4 mt-2">
+          <a href="#" class="hover:text-red-400" aria-label="Facebook"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
+          <a href="#" class="hover:text-red-400" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></svg></a>
+          <a href="#" class="hover:text-red-400" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-red-800 pt-6 text-center text-xs text-red-300">&copy;  CEC2SET-2025 &bull; Galgotias College of Engineering and Technology. All rights reserved.</div>
+  </footer>
+</body>
+</html>
